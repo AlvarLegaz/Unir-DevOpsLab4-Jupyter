@@ -1,0 +1,18 @@
+version: "3.0"
+
+services:
+  jupyter:
+    build:
+      context: ./jupyter
+    container_name: jupyter
+    hostname: jupyter
+    ports:
+      - "8888:8888"
+      - "22:22"
+    # environment:
+    #   - DOCKER_STACKS_JUPYTER_CMD=notebook
+    volumes:
+      - ./runbooks:/runbooks
+      - /home/${USER}/.ssh:/home/jovyan/.ssh
+      - /tmp/data:/data
+  
